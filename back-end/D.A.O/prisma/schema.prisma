@@ -2,10 +2,44 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+    provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+model User {
+    id       String @id
+    nickname String
+    password String
+    Creatures Creature[]
+    areaId String
+}
+
+model Area {
+    id String @id
+    name String
+    Creatures Creature[]
+    temperature Float
+    humidity Float
+    fullness Float
+    reactivity Float
+    speed Float
+}
+
+model Creature {
+    id String @id
+    User User? @relation(fields: [userId], references: [id])
+    userId String?
+    Area Area @relation(fields: [areaId], references: [id])
+    areaId String
+    size Float
+    shape String
+    reactivity Float
+    speed Float
+    health Float
+    damage Int
+    food Float
 }
