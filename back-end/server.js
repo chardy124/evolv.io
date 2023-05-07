@@ -1,6 +1,7 @@
 "use strict";
 const Hapi = require("@hapi/hapi");
 const Inert = require("@hapi/inert");
+import { PrismaClient } from "@prisma/client";
 const fs = require("fs");
 
 const init = async () => {
@@ -104,6 +105,8 @@ const init = async () => {
                 }
             }
         }
+
+
 
     ]);
 
