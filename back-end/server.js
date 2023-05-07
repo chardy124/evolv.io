@@ -1,5 +1,5 @@
 "use strict";
-import Hapi from "@hapi/hapi";
+const Hapi = require("@hapi/hapi")
 
 const init = async () => {
 
@@ -8,12 +8,12 @@ const init = async () => {
         port: 3000
     });
 
-    /*await server.register({
+    await server.register({
         plugin: require("hapi-geo-locate"),
         options: {
             enabledByDefault: true
         }
-    });*/
+    });
 
     server.route([
 
