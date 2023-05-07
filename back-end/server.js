@@ -1,5 +1,7 @@
 "use strict";
-const Hapi = require("@hapi/hapi")
+const Hapi = require("@hapi/hapi");
+const Inert = require("@hapi/inert");
+const fs = require("fs");
 
 const init = async () => {
 
@@ -8,12 +10,16 @@ const init = async () => {
         port: 3000
     });
 
-    await server.register({
-        plugin: require("hapi-geo-locate"),
-        options: {
-            enabledByDefault: true
-        }
-    });
+    await server.register([
+        {
+            plugin: require("hapi-geo-locate"),
+            options: {
+                enabledByDefault: true
+            }
+        }, {
+            plugin: Inert
+        },
+    ]);
 
     server.route([
 
@@ -22,7 +28,8 @@ const init = async () => {
             method: "GET",
             path: "/",
             handler: (request, h) => {
-                return "<h1>Page d'accueil</h1>"
+                //return h.file("../back-end/welcome.html");
+                return h.file("../front-end/static_pages/welcome.html");
             }
         },
 
