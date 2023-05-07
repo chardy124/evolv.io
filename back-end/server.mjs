@@ -99,5 +99,3 @@ process.on("unhandledRejection", (err) => {
 })
 
 init();
-
-// yolo
