@@ -28,8 +28,7 @@ const init = async () => {
             method: "GET",
             path: "/",
             handler: (request, h) => {
-                //return h.file("../back-end/welcome.html");
-                return h.file("../front-end/static_pages/welcome.html");
+                return h.file("../back-end/static_pages/welcome.html");
             }
         },
 
