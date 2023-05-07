@@ -9,8 +9,12 @@
 </head>
 
 <body>
-    <label class="pseudo">Pseudo</label>
-    <input class="input-pseudo" type="text" name="input-pseudo">
+    <form action="/login" method="POST">
+        <label class="pseudo">Pseudo</label>
+        <input class="input-pseudo" type="text" name="nickname">
+        <input class="input-pseudo" type="password" name="password">
+        <input class="submit-input" type="submit" value="Login">
+    </form>
 </body>
 
 </html>
@@ -30,6 +34,14 @@
         background-color: #F8E0E0;
     }
 
+    form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px
+    }
+
     .pseudo {
         font-size: medium;
     }
@@ -46,5 +58,14 @@
 
     .input-pseudo:focus {
         outline: 1px solid #37377d;
+    }
+
+    .submit-input {
+        border: none;
+        outline: 1px solid black;
+        box-shadow: 1px 4px 3px #B0B0B0;
+        width: fit-content;
+        padding: 6px 12px;
+        border-radius: 7px;
     }
 </style>

@@ -58,19 +58,19 @@ const init = async () => {
             method: "GET",
             path: "/users/{id}",
             handler: (request, h) => {
-                return "<h1>Identifiant de l'utilisateur : "+request.params.id+"</h1>"
+                return "<h1>Identifiant de l'utilisateur : " + request.params.id + "</h1>"
             }
         }, {
             method: "GET",
             path: "/areas/{id}",
             handler: (request, h) => {
-                return "<h1>Identifiant de la zone: "+request.params.id+"</h1>"
+                return "<h1>Identifiant de la zone: " + request.params.id + "</h1>"
             }
         }, {
             method: "GET",
             path: "/creatures/{id}",
             handler: (request, h) => {
-                return "<h1>Identifiant de la créature : "+request.params.id+"</h1>"
+                return "<h1>Identifiant de la créature : " + request.params.id + "</h1>"
             }
         },
 
@@ -90,12 +90,25 @@ const init = async () => {
             handler: (request, h) => {
                 return request.location;
             }
+        },
+
+        // Authentification
+        {
+            method: "POST",
+            path: "/login",
+            handler: (request, h) => {
+                if (request.payload.nickname === "admin" && request.payload.password === "admin") {
+                    return "<h1>Vous êtes administrateur</h1>";
+                } else {
+                    return "<h1>Vous n'êtes pas Admin !</h1>";
+                }
+            }
         }
 
     ]);
 
     await server.start();
-    console.log("Server running at:"+server.info.uri);
+    console.log("Server running at:" + server.info.uri);
 
 }
 
