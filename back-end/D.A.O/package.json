@@ -2,13 +2,15 @@
   "name": "d.a.o",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.mjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@hapi/hapi": "^21.3.2",
+    "@prisma/client": "^4.13.0",
     "node-fetch": "^3.3.1"
   },
   "devDependencies": {

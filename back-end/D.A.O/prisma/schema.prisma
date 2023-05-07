@@ -6,40 +6,42 @@ generator client {
 }
 
 datasource db {
-    provider = "postgresql"
-    url      = env("DATABASE_URL")
+    provider = "sqlite"
+    url      = "file:./maDB.db" //--env("DATABASE_URL")--
 }
 
 model User {
-    id       String @id
-    nickname String
-    password String
+    id        String     @id @default(uuid())
+    nickname  String
+    password  String
     Creatures Creature[]
-    areaId String
 }
 
 model Area {
-    id String @id
-    name String
-    Creatures Creature[]
-    temperature Float
-    humidity Float
-    fullness Float
-    reactivity Float
-    speed Float
+    id           String     @id @default(uuid())
+    name         String
+    Creatures    Creature[]
+    temperature  Float
+    humidity     Float
+    fullness     Float
+    reactivity   Float
+    deceleration Float
 }
 
 model Creature {
-    id String @id
-    User User? @relation(fields: [userId], references: [id])
-    userId String?
-    Area Area @relation(fields: [areaId], references: [id])
-    areaId String
-    size Float
-    shape String
-    reactivity Float
-    speed Float
-    health Float
-    damage Int
-    food Float
+    id           String  @id @default(uuid())
+    User         User?   @relation(fields: [userId], references: [id])
+    userId       String?
+    Area         Area    @relation(fields: [areaId], references: [id])
+    areaId       String
+    positionX    Float
+    positionY    Float
+    speed        Float
+    acceleration Float
+    size         Float
+    shape        String
+    reactivity   Float
+    health       Float
+    damage       Int
+    food         Float
 }
