@@ -31,6 +31,21 @@ const userDao = {
 		return users.length > 0? users[0] : null
 	},
 
+	// Authentifie un utilisateur par le nom ET le mot de passe saisi
+
+	ComparMDP: (nickname, pssw) => {
+
+		if (model.users.filter(user=> user.nickname!=nickname)){
+			return null
+		}
+		else if (model.users.filter(user=> user.password!=pssw)){
+			return null
+		}
+		return "correct" 
+
+	},
+
+
 	// Supprime un utilisateur
 	deleteById: (id) => {
 		const user = userDao.findById(id)
