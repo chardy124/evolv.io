@@ -1,14 +1,18 @@
 "use strict";
 const Hapi = require("@hapi/hapi");
 const Inert = require("@hapi/inert");
-
 const fs = require("fs");
 
 const init = async () => {
 
     const server = Hapi.Server({
         host: 'localhost',
-        port: 3000
+        port: 3000,
+        /*routes: {
+            files: {
+                relativeTo: path.join(__dirname, "static_pages")
+            }
+        }*/
     });
 
     await server.register([
@@ -20,7 +24,17 @@ const init = async () => {
         }, {
             plugin: Inert
         },
+        {
+            plugin: require("@hapi/vision")
+        }
     ]);
+
+    /*server.views({
+        engines: {
+            html: require("handlebars")
+        },
+        path: path.join(__dirname, "views"),
+    })*/
 
     server.route([
 
