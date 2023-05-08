@@ -10,10 +10,10 @@
 
 <body>
     <form action="/login" method="POST">
-        <label class="pseudo">Pseudo</label>
-        <input class="input-pseudo" type="text" name="nickname">
-        <input class="input-pseudo" type="password" name="password">
-        <input class="submit-input" type="submit" value="Login">
+        <label class="title">Jeu.io</label>
+        <input class="input-pseudo" placeholder="Pseudo" type="text" name="nickname">
+        <input class="input-password" placeholder="Mot de passe" type="password" name="password">
+        <input class="submit-input" type="submit" value="Se connecter">
     </form>
 </body>
 
@@ -42,16 +42,17 @@
         gap: 10px
     }
 
-    .pseudo {
+    .title {
         font-size: medium;
+        text-shadow: 1px 4px 3px #B0B0B0;
     }
 
-    .input-pseudo {
+    .input-pseudo, .input-password{
         border: none;
         outline: 1px solid black;
         box-shadow: 1px 4px 3px #B0B0B0;
         width: 200px;
-        padding: 8px;
+        padding: 9px 7px 8px 12px;
         border-radius: 7px;
         background-color: #E0F8E0;
     }
