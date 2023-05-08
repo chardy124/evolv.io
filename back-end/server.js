@@ -2,8 +2,6 @@
 const Hapi = require("@hapi/hapi");
 const Inert = require("@hapi/inert");
 
-const Prism =require("@prisma");
-
 const fs = require("fs");
 
 const init = async () => {
