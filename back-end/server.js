@@ -1,6 +1,8 @@
 "use strict";
 const Hapi = require("@hapi/hapi");
 const Inert = require("@hapi/inert");
+const Vision = require("@hapi/vision");
+const path = require("path");
 const fs = require("fs");
 
 const init = async () => {
@@ -8,11 +10,12 @@ const init = async () => {
     const server = Hapi.Server({
         host: 'localhost',
         port: 3000,
-        /*routes: {
+        // Chemin pris par défaut pour les pages statiques (h.file)
+        routes: {
             files: {
-                relativeTo: path.join(__dirname, "static_pages")
+                relativeTo: path.join(__dirname, "views")
             }
-        }*/
+        }
     });
 
     await server.register([
@@ -24,17 +27,18 @@ const init = async () => {
         }, {
             plugin: Inert
         },
-        // {
-        //     plugin: require("@hapi/vision")
-        // }
+        {
+            plugin: Vision
+        }
     ]);
 
-    /*server.views({
+    server.views({
+        // Chemin pris par défaut pour les pages dynamiques (h.view)
         engines: {
             html: require("handlebars")
         },
         path: path.join(__dirname, "views"),
-    })*/
+    })
 
     server.route([
 
@@ -43,7 +47,7 @@ const init = async () => {
             method: "GET",
             path: "/",
             handler: (request, h) => {
-                return h.file("../back-end/static_pages/welcome.html");
+                return h.file("./static_pages/welcome.html");
             }
         },
 
@@ -115,12 +119,25 @@ const init = async () => {
                 if (request.payload.nickname === "admin" && request.payload.password === "admin") {
                     return "<h1>Vous êtes administrateur</h1>";
                 } else {
-                    return "<h1>Vous n'êtes pas Admin !</h1>";
+                    const data = {
+                        nickname: request.payload.nickname
+                    }
+                    return h.view("./dynamic_pages/loggedIn.html", data);
                 }
             }
+        },
+
+        // Connecté
+        {
+            method: "GET",
+            path: "/dynamic",
+            handler: (request, h) => {
+                const data = {
+                    nickname: "PseudoDonné"
+                }
+                return h.view("./dynamic_pages/loggedIn.html", data);
+            }
         }
-
-
 
     ]);
 

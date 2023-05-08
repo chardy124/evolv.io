@@ -1,20 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Game | Login</title>
 </head>
 
 <body>
-    <form action="/login" method="POST">
-        <label class="title">Jeu.io</label>
-        <input class="input-pseudo" placeholder="Pseudo" type="text" name="nickname">
-        <input class="input-password" placeholder="Mot de passe" type="password" name="password">
-        <input class="submit-input" type="submit" value="Se connecter">
-    </form>
+    <div class="box">
+        <form action="/login" method="POST">
+            <label class="title">Bienvenue !</label>
+            <input class="input-pseudo" placeholder="Pseudo" type="text" name="nickname">
+            <input class="input-password" placeholder="Mot de passe" type="password" name="password">
+            <input class="submit-input" type="submit" value="Se connecter">
+        </form>
+    </div>
 </body>
 
 </html>
@@ -32,6 +34,13 @@
         align-items: center;
         height: 85vh;
         background-color: #F8E0E0;
+    }
+
+    .box {
+        background-color: #FFFFFF;
+        padding: 65px;
+        border-radius: 42px;
+        box-shadow: inset 0px 0px 10px #000000;
     }
 
     form {
@@ -55,6 +64,7 @@
         padding: 9px 7px 8px 12px;
         border-radius: 7px;
         background-color: #E0F8E0;
+
     }
 
     .input-pseudo:focus {
