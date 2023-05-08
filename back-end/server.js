@@ -33,10 +33,10 @@ const init = async () => {
     ]);
 
     server.views({
-        // Chemin pris par défaut pour les pages dynamiques (h.view)
         engines: {
             html: require("handlebars")
         },
+        // Chemin pris par défaut pour les pages dynamiques (h.view)
         path: path.join(__dirname, "views"),
     })
 
