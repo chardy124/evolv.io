@@ -24,9 +24,9 @@ const init = async () => {
         }, {
             plugin: Inert
         },
-        {
-            plugin: require("@hapi/vision")
-        }
+        // {
+        //     plugin: require("@hapi/vision")
+        // }
     ]);
 
     /*server.views({
